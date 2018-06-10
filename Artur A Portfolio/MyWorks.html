@@ -1,0 +1,191 @@
+<html lang="da"><head>
+
+  <title>Artur Amaev</title>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="css/style.css" type="text/css">
+      <link rel="stylesheet" href="css/latofonts.css" type="text/css">
+
+</head>
+
+<body>
+
+  <div class="primary-navigation">
+    <div class="primary-navigation-wrapper">
+      <a class="logo" href="index.html">Artur Amaev</a>
+      <nav class="desktop-navigation">
+        <ul class="topmenu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="aboutMe.html">CV</a></li>
+          <li><a  class="submenu-link" href="MyWorks.html">Portfolio</a>
+        <ul class="submenu">
+            <li  style="background-color: #222;margin-left:0px;width: 300px;"><a href="work1.html">Grundlæggende HTML</a></li>
+            <li  style="background-color: #222;margin-left:0px;width: 300px;"><a href="work2.html">Animation</a></li>
+            <li  style="background-color: #222;margin-left:0px;width: 300px;"><a href="work3.html">Grundlæggende video</a></li>
+            <li  style="background-color: #222;margin-left:0px;width: 300px;"><a href="work4.html">Grundlæggende UX</a></li>
+        </ul>
+    </li>
+
+        </ul>
+      </nav>
+      <a class="menu-toggle" href="#"><span class="menu-icon"></span></a>
+    </div>
+  </div>
+  <nav class="secondary-navigation">
+    <ul class="mobile-navigation">
+      <li><a href="index.html" onclick="document.location='index.html'">Home</a></li>
+      <li><a href="aboutMe.html"  onclick="document.location='aboutMe.html'">About Me</a></li>
+      <li><a href="MyWorks.html"  onclick="document.location='MyWorks.html'">Portfolio</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero-container main-background-colour">
+    <div class="hero-wrapper">
+      <p class="hero-message">Portfolio</p>
+    </div>
+  </section>
+
+  <section id="portfolio" class="project-thumbnail-container">
+      <div class="about-wrapper">
+        <h2>Tidligere projekter</h2>
+        <p>Her er et par eksempler på mine tidligere projekter, som jeg fik lavet på KEA.</p>
+      </div>
+      <div class="project-thumbnail-wrapper">
+
+
+
+
+
+        <div class="thumbnail">
+        <a href="work1.html">
+            <div class="thumbnail-image">
+
+              <img src="images/splash.png">
+              <div class="thumbnail-overlay">
+
+                <span class="thumbnail-title">Grundlæggende HTML</span>
+                <span class="thumbnail-category">her er et eksempel på min første html hjemmeside. I denne projekt har jeg prøvet mig selv i arbejde med html og css.</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+
+
+
+
+        <div class="thumbnail">
+          <a href="work2.html">
+            <div class="thumbnail-image">
+
+              <img src="images/illustrator1.png">
+              <div class="thumbnail-overlay">
+
+                <span class="thumbnail-title">Animation</span>
+                <span class="thumbnail-category">Her er et lille spil jeg har lavet ved brug af javascript, html og css.</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+
+
+
+
+        <div class="thumbnail">
+          <a href="work3.html">
+            <div class="thumbnail-image">
+
+              <img src="images/lev.png">
+              <div class="thumbnail-overlay">
+
+                <span class="thumbnail-title">Grundlæggende Video</span>
+                <span class="thumbnail-category">her er et projekt som mig og min gruppe har lavet til CPH:DOX 2018, hvor vi endte med at vinde konkurencen for den bedste film i klassen.</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+   <div class="thumbnail">
+          <a href="work4.html">
+            <div class="thumbnail-image">
+
+              <img src="images/joenjuice.jpg">
+              <div class="thumbnail-overlay">
+
+                <span class="thumbnail-title">Grundlæggende UX</span>
+                <span class="thumbnail-category">Her har vi prøvet krafterne i arbejde med UX, hvor vi fik lov til at lave om på Joe and The Juice app.</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+
+
+</div>
+</a>
+</div>
+      </div>
+          </section>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+jQuery(document).ready(function($){
+vid = document.getElementById('myVideo');
+
+vid.addEventListener('mouseenter', function() {
+  vid.play();
+});
+
+vid.addEventListener('mouseleave', function() {
+  vid.pause();
+});
+});
+</script>
+<script>
+jQuery(document).ready(function($){
+
+var $menu_toggle = $('.menu-toggle'),
+$menu_item = $('.mobile-navigation li a');
+
+$menu_item.on('click', function(event){
+event.preventDefault();
+
+$menu_toggle.toggleClass('clicked');
+  $(".secondary-navigation").toggleClass("slide-content-down");
+  $(".mobile-navigation").toggleClass("show-secondary-navigation");
+});
+
+
+var $menu_toggle = $('.menu-toggle');
+
+
+
+$menu_toggle.on('click', function(event){
+  event.preventDefault();
+
+  $menu_toggle.toggleClass('clicked');
+  $(".secondary-navigation").toggleClass("slide-content-down");
+  $(".mobile-navigation").toggleClass("show-secondary-navigation");
+
+});
+$(window).resize(function(){
+  var minwidth = $(window).innerWidth();
+  if(minwidth > 800){
+    $menu_toggle.removeClass('clicked');
+    $(".secondary-navigation").removeClass("slide-content-down");
+    $(".mobile-navigation").removeClass("show-secondary-navigation");
+
+  }
+});
+
+});
+
+</script>
+
+
+
+
+
+</body></html>

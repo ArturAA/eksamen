@@ -1,0 +1,110 @@
+<html lang="da">
+
+    <head>
+
+  <title>Artur Amaev</title>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="css/style.css" type="text/css">
+  <link rel="stylesheet" href="css/latofonts.css" type="text/css">
+
+    </head>
+
+<body>
+
+  <div class="primary-navigation">
+    <div class="primary-navigation-wrapper">
+      <a class="logo" href="index.html">Artur Amaev</a>
+      <nav class="desktop-navigation">
+        <ul class="topmenu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="aboutMe.html">CV</a></li>
+          <li><a  class="submenu-link" href="MyWorks.html">Portfolio</a>
+        <ul class="submenu">
+            <li  style="background-color: #222;margin-left:0px;width: 300px;"><a href="work1.html">Grundlæggende HTML</a></li>
+            <li  style="background-color: #222;margin-left:0px;width: 300px;"><a href="work2.html">Animation</a></li>
+            <li  style="background-color: #222;margin-left:0px;width: 300px;"><a href="work3.html">Grundlæggende video</a></li>
+            <li  style="background-color: #222;margin-left:0px;width: 300px;"><a href="work3.html">Grundlæggende UX</a></li>
+        </ul>
+    </li>
+
+        </ul>
+      </nav>
+      <a class="menu-toggle" href="#"><span class="menu-icon"></span></a>
+    </div>
+  </div>
+  <nav class="secondary-navigation">
+    <ul class="mobile-navigation">
+      <li><a href="index.html" onclick="document.location='index.html'">Home</a></li>
+      <li><a href="aboutMe.html"  onclick="document.location='aboutMe.html'">About Me</a></li>
+      <li><a href="MyWorks.html"  onclick="document.location='MyWorks.html'">Portfolio</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero-container main-background-colour">
+    <div class="hero-wrapper">
+      <img src="images/person_1.jpg" class="avatar">
+      <p class="hero-message">Artur A. KEA</p>
+  <!--    <a href="#portfolio" class="button outline-button main-text-colour">View home page</a>
+      <a href="#contact" class="button outline-button main-text-colour">View my works</a> -->
+    </div>
+  </section>
+
+  <section id="about" class="about-container">
+    <div class="about-wrapper">
+      <h2>Om mig</h2>
+      <p>Mit navn er Artur A. og jeg studerer til multimedia designer på KEA. Jeg kan bedst lide at arbejde med video og billedredigeringsprogrammer, så som Adobe Photoshop, Illustrator og Premier Pro. Jeg er et sikker valg, hvis du skal brug et logo, banner eller anden form for billedmanipulation og redigering.  </p>
+    </div>
+
+  </section>
+
+
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script>
+    jQuery(document).ready(function($){
+
+    var $menu_toggle = $('.menu-toggle'),
+    $menu_item = $('.mobile-navigation li a');
+
+    $menu_item.on('click', function(event){
+    event.preventDefault();
+
+    $menu_toggle.toggleClass('clicked');
+      $(".secondary-navigation").toggleClass("slide-content-down");
+      $(".mobile-navigation").toggleClass("show-secondary-navigation");
+    });
+
+
+    var $menu_toggle = $('.menu-toggle');
+
+
+
+    $menu_toggle.on('click', function(event){
+      event.preventDefault();
+
+      $menu_toggle.toggleClass('clicked');
+      $(".secondary-navigation").toggleClass("slide-content-down");
+      $(".mobile-navigation").toggleClass("show-secondary-navigation");
+
+    });
+    $(window).resize(function(){
+      var minwidth = $(window).innerWidth();
+      if(minwidth > 800){
+        $menu_toggle.removeClass('clicked');
+        $(".secondary-navigation").removeClass("slide-content-down");
+        $(".mobile-navigation").removeClass("show-secondary-navigation");
+
+      }
+    });
+
+  });
+
+  </script>
+
+
+
+
+
+</body></html>

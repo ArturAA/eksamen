@@ -1,0 +1,203 @@
+<html lang="da"><head>
+
+  <title>Artur Amaev</title>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="css/style.css" type="text/css">
+      <link rel="stylesheet" href="css/latofonts.css" type="text/css">
+
+</head>
+
+<body>
+  <div class="primary-navigation">
+    <div class="primary-navigation-wrapper">
+      <a class="logo" href="index.html">Artur Amaev</a>
+      <nav class="desktop-navigation">
+        <ul class="topmenu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="aboutMe.html">CV</a></li>
+          <li><a  class="submenu-link" href="MyWorks.html">Portfolio</a>
+        <ul class="submenu">
+            <li  style="background-color: #222;margin-left:0px;width: 300px;"><a href="work1.html">Grundlæggende HTML</a></li>
+            <li  style="background-color: #222;margin-left:0px;width: 300px;"><a href="work2.html">Animation</a></li>
+            <li  style="background-color: #222;margin-left:0px;width: 300px;"><a href="work3.html">Grundlæggende video</a></li>
+            <li  style="background-color: #222;margin-left:0px;width: 300px;"><a href="work4.html">Grundlæggende UX</a></li>
+        </ul>
+    </li>
+
+        </ul>
+      </nav>
+      <a class="menu-toggle" href="#"><span class="menu-icon"></span></a>
+    </div>
+  </div>
+  <nav class="secondary-navigation">
+    <ul class="mobile-navigation">
+      <li><a href="index.html" onclick="document.location='index.html'">Home</a></li>
+      <li><a href="aboutMe.html"  onclick="document.location='aboutMe.html'">About Me</a></li>
+      <li><a href="MyWorks.html"  onclick="document.location='MyWorks.html'">Portfolio</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero-container main-background-colour">
+    <div class="hero-wrapper">
+      <p class="hero-message">Grundlæggende Video</p>
+    </div>
+  </section>
+
+  <section id="about" class="about-container">
+    <div class="about-wrapper">
+      <h2>Stilart side</h2>
+      <p>Her er en video som mig og min gruppe har lavet til CPH:DOX og som vi endte med at vinde første præmie for. Filmen handler om en handicappet fyr og hans måde at takle de mest basale behov og kunne leve imens han er bundet til kørestolen.</p>
+        <div>
+        <a href="https://youtu.be/uefDdi4kxuc" class="button outline-button main-text-colour">CPH DOX - LEV</a>
+        
+        </div>
+        <div>
+      <div id="block-for-slider">
+              <div id="viewport">
+                  <ul id="slidewrapper">
+                      <li class="slide"><img src="images/CPHDOX.jpg" alt="1" class="slide-img"></li>
+                      <li class="slide"><img src="images/lev.png" alt="2" class="slide-img"></li>
+                      <li class="slide"><img src="images/premier.jpg" alt="3" class="slide-img"></li>
+                  </ul>
+
+                  <div id="prev-next-btns">
+                      <div id="prev-btn"></div>
+                      <div id="next-btn"></div>
+                  </div>
+
+              </div>
+          </div>
+            
+            
+        </div>
+    </div>
+
+  </section>
+
+
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+   <script>
+var slideNow = 1;
+var slideCount = $('#slidewrapper').children().length;
+var slideInterval = 3000;
+var navBtnId = 0;
+var translateWidth = 0;
+
+$(document).ready(function() {
+    var switchInterval = setInterval(nextSlide, slideInterval);
+
+    $('#viewport').hover(function() {
+        clearInterval(switchInterval);
+    }, function() {
+        switchInterval = setInterval(nextSlide, slideInterval);
+    });
+
+    $('#next-btn').click(function() {
+        nextSlide();
+    });
+
+    $('#prev-btn').click(function() {
+        prevSlide();
+    });
+
+    $('.slide-nav-btn').click(function() {
+        navBtnId = $(this).index();
+
+        if (navBtnId + 1 != slideNow) {
+            translateWidth = -$('#viewport').width() * (navBtnId);
+            $('#slidewrapper').css({
+                'transform': 'translate(' + translateWidth + 'px, 0)',
+                '-webkit-transform': 'translate(' + translateWidth + 'px, 0)',
+                '-ms-transform': 'translate(' + translateWidth + 'px, 0)',
+            });
+            slideNow = navBtnId + 1;
+        }
+    });
+});
+
+
+function nextSlide() {
+    if (slideNow == slideCount || slideNow <= 0 || slideNow > slideCount) {
+        $('#slidewrapper').css('transform', 'translate(0, 0)');
+        slideNow = 1;
+    } else {
+        translateWidth = -$('#viewport').width() * (slideNow);
+        $('#slidewrapper').css({
+            'transform': 'translate(' + translateWidth + 'px, 0)',
+            '-webkit-transform': 'translate(' + translateWidth + 'px, 0)',
+            '-ms-transform': 'translate(' + translateWidth + 'px, 0)',
+        });
+        slideNow++;
+    }
+}
+
+function prevSlide() {
+    if (slideNow == 1 || slideNow <= 0 || slideNow > slideCount) {
+        translateWidth = -$('#viewport').width() * (slideCount - 1);
+        $('#slidewrapper').css({
+            'transform': 'translate(' + translateWidth + 'px, 0)',
+            '-webkit-transform': 'translate(' + translateWidth + 'px, 0)',
+            '-ms-transform': 'translate(' + translateWidth + 'px, 0)',
+        });
+        slideNow = slideCount;
+    } else {
+        translateWidth = -$('#viewport').width() * (slideNow - 2);
+        $('#slidewrapper').css({
+            'transform': 'translate(' + translateWidth + 'px, 0)',
+            '-webkit-transform': 'translate(' + translateWidth + 'px, 0)',
+            '-ms-transform': 'translate(' + translateWidth + 'px, 0)',
+        });
+        slideNow--;
+    }
+}
+</script> 
+    
+  <script>
+    jQuery(document).ready(function($){
+
+    var $menu_toggle = $('.menu-toggle'),
+    $menu_item = $('.mobile-navigation li a');
+
+    $menu_item.on('click', function(event){
+    event.preventDefault();
+
+    $menu_toggle.toggleClass('clicked');
+      $(".secondary-navigation").toggleClass("slide-content-down");
+      $(".mobile-navigation").toggleClass("show-secondary-navigation");
+    });
+
+
+    var $menu_toggle = $('.menu-toggle');
+
+
+
+    $menu_toggle.on('click', function(event){
+      event.preventDefault();
+
+      $menu_toggle.toggleClass('clicked');
+      $(".secondary-navigation").toggleClass("slide-content-down");
+      $(".mobile-navigation").toggleClass("show-secondary-navigation");
+
+    });
+    $(window).resize(function(){
+      var minwidth = $(window).innerWidth();
+      if(minwidth > 800){
+        $menu_toggle.removeClass('clicked');
+        $(".secondary-navigation").removeClass("slide-content-down");
+        $(".mobile-navigation").removeClass("show-secondary-navigation");
+
+      }
+    });
+
+  });
+
+  </script>
+
+
+
+
+
+</body></html>

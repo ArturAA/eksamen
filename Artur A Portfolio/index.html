@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="da"><head>
+
+  <!--- Website Title --->
+  <title>Artur Amaev MMD KEA</title>
+
+  <!--- Website Meta Information --->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="css/latofonts.css" type="text/css">
+
+
+</head>
+
+<body>
+
+  <div class="primary-navigation">
+    <div class="primary-navigation-wrapper">
+      <a class="logo" href="index.html">Artur Amaev</a>
+      <nav class="desktop-navigation">
+        <ul class="topmenu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="aboutMe.html">CV</a></li>
+          <li><a  class="submenu-link" href="MyWorks.html">Portfolio</a>
+        <ul class="submenu">
+            <li  style="background-color: #222;margin-left:0px;width: 300px;"><a href="work1.html">Grundlæggende HTML</a></li>
+            <li  style="background-color: #222;margin-left:0px;width: 300px;"><a href="work2.html">Animation</a></li>
+            <li  style="background-color: #222;margin-left:0px;width: 300px;"><a href="work3.html">Grundlæggende video</a></li>
+            <li  style="background-color: #222;margin-left:0px;width: 300px;"><a href="work4.html">Grundlæggende UX</a></li>
+        </ul>
+    </li>
+
+        </ul>
+      </nav>
+      <a class="menu-toggle" href="#"><span class="menu-icon"></span></a>
+    </div>
+  </div>
+  <nav class="secondary-navigation">
+    <ul class="mobile-navigation">
+      <li><a href="index.html" onclick="document.location='index.html'">Home</a></li>
+      <li><a href="aboutMe.html"  onclick="document.location='aboutMe.html'">About Me</a></li>
+      <li><a href="MyWorks.html"  onclick="document.location='MyWorks.html'">Portfolio</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero-container main-background-colour">
+    <div class="hero-wrapper">
+        <p id="img2"></p>
+    <style>
+    #img2 {
+      width: 164px;
+      height: 136px;
+      margin-left: 10px;
+      background-image:url(images/vagt.png);
+      background-position:0% 0%;
+      z-index: 3;
+      -moz-transform: scale(-1, 1);
+    -webkit-transform: scale(-1, 1);
+    -o-transform: scale(-1, 1);
+    transform: scale(-1, 1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+    }
+    </style>
+    <script>
+    window.onload = function(){
+      var timer2; //переменная таймера
+          var frames2 = 2; //количество кадров в спрайте
+             var AbsVal2 = 0; //
+          timer2 = setInterval(() => { //создаем интервал
+            var positionBouncerBg = "-" + AbsVal2 + "00% 0%"; //изменяем переменную содержащую значение позиции
+            img2.style.backgroundPosition = positionBouncerBg; //меняем стили на наши
+            AbsVal2 = (AbsVal2 + 1) % frames2; // с помощью % ищем остаток от деления m + 1 и frames
+          }, 500) //частота обновления интервала.
+    }
+    </script>
+      <p class="hero-message"> <strong style="border-bottom: 3px solid white;">"Creativity takes courage"</strong> - Henri Mattise</p>
+    </div>
+  </section>
+
+  <section id="slider" class="about-container">
+    <div class="about-wrapper">
+      <div id="block-for-slider">
+              <div id="viewport">
+                  <ul id="slidewrapper">
+                      <li class="slide"><img src="images/illustrator1.png" alt="1" class="slide-img"></li>
+                      <li class="slide"><img src="images/stilart1.png" alt="2" class="slide-img"></li>
+                      <li class="slide"><img src="images/lev.png" alt="3" class="slide-img"></li>
+                      <li class="slide"><img src="images/CPHDOX.jpg" alt="4" class="slide-img"></li>
+                  </ul>
+
+                  <div id="prev-next-btns">
+                      <div id="prev-btn"></div>
+                      <div id="next-btn"></div>
+                  </div>
+              </div>
+          </div>
+    </div>
+    </section>
+
+
+
+
+  <!--- Javascript Files --->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+var slideNow = 1;
+var slideCount = $('#slidewrapper').children().length;
+var slideInterval = 3000;
+var navBtnId = 0;
+var translateWidth = 0;
+
+$(document).ready(function() {
+    var switchInterval = setInterval(nextSlide, slideInterval);
+
+    $('#viewport').hover(function() {
+        clearInterval(switchInterval);
+    }, function() {
+        switchInterval = setInterval(nextSlide, slideInterval);
+    });
+
+    $('#next-btn').click(function() {
+        nextSlide();
+    });
+
+    $('#prev-btn').click(function() {
+        prevSlide();
+    });
+
+    $('.slide-nav-btn').click(function() {
+        navBtnId = $(this).index();
+
+        if (navBtnId + 1 != slideNow) {
+            translateWidth = -$('#viewport').width() * (navBtnId);
+            $('#slidewrapper').css({
+                'transform': 'translate(' + translateWidth + 'px, 0)',
+                '-webkit-transform': 'translate(' + translateWidth + 'px, 0)',
+                '-ms-transform': 'translate(' + translateWidth + 'px, 0)',
+            });
+            slideNow = navBtnId + 1;
+        }
+    });
+});
+
+
+function nextSlide() {
+    if (slideNow == slideCount || slideNow <= 0 || slideNow > slideCount) {
+        $('#slidewrapper').css('transform', 'translate(0, 0)');
+        slideNow = 1;
+    } else {
+        translateWidth = -$('#viewport').width() * (slideNow);
+        $('#slidewrapper').css({
+            'transform': 'translate(' + translateWidth + 'px, 0)',
+            '-webkit-transform': 'translate(' + translateWidth + 'px, 0)',
+            '-ms-transform': 'translate(' + translateWidth + 'px, 0)',
+        });
+        slideNow++;
+    }
+}
+
+function prevSlide() {
+    if (slideNow == 1 || slideNow <= 0 || slideNow > slideCount) {
+        translateWidth = -$('#viewport').width() * (slideCount - 1);
+        $('#slidewrapper').css({
+            'transform': 'translate(' + translateWidth + 'px, 0)',
+            '-webkit-transform': 'translate(' + translateWidth + 'px, 0)',
+            '-ms-transform': 'translate(' + translateWidth + 'px, 0)',
+        });
+        slideNow = slideCount;
+    } else {
+        translateWidth = -$('#viewport').width() * (slideNow - 2);
+        $('#slidewrapper').css({
+            'transform': 'translate(' + translateWidth + 'px, 0)',
+            '-webkit-transform': 'translate(' + translateWidth + 'px, 0)',
+            '-ms-transform': 'translate(' + translateWidth + 'px, 0)',
+        });
+        slideNow--;
+    }
+}
+</script>
+  <script>
+    jQuery(document).ready(function($){
+
+    var $menu_toggle = $('.menu-toggle'),
+    $menu_item = $('.mobile-navigation li a');
+
+    $menu_item.on('click', function(event){
+    event.preventDefault();
+
+    $menu_toggle.toggleClass('clicked');
+      $(".secondary-navigation").toggleClass("slide-content-down");
+      $(".mobile-navigation").toggleClass("show-secondary-navigation");
+    });
+
+
+  	var $menu_toggle = $('.menu-toggle');
+
+  	// Open and close the mobile navigation when clicking on the menu icon.
+
+  	$menu_toggle.on('click', function(event){
+  		event.preventDefault();
+
+  		$menu_toggle.toggleClass('clicked');
+  		$(".secondary-navigation").toggleClass("slide-content-down");
+  		$(".mobile-navigation").toggleClass("show-secondary-navigation");
+
+  	});
+  	$(window).resize(function(){
+  		var minwidth = $(window).innerWidth();
+  		if(minwidth > 800){
+  			$menu_toggle.removeClass('clicked');
+  			$(".secondary-navigation").removeClass("slide-content-down");
+  			$(".mobile-navigation").removeClass("show-secondary-navigation");
+
+  		}
+  	});
+
+  });
+
+  </script>
+
+
+
+
+
+</body></html>
